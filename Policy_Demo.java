@@ -1,5 +1,5 @@
 /*
-   policy class demo
+   policy class demo___
 */
 
 import java.util.Scanner; //scanner class to read input
