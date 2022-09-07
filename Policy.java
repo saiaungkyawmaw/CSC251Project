@@ -3,17 +3,20 @@
 */
 
 
-public class Policy_Sai_Maw
+public class Policy
 {
    //fields to store relevant primary data
-   private String pHolderFirstName,pHolderLastName;
-   private char pHolderSmokingStatus;
+   private String pHolderFirstName;
+   private String pHolderLastName;
+   private String pHolderSmokingStatus;
    private int pHolderAge = 0;
-   private double pHolderWeightInLb, pHolderHeightInInch;
-   private String policyNum, providerName;
+   private double pHolderWeightInLb;
+   private double pHolderHeightInInch;
+   private String policyNum;
+   private String providerName;
    
    //no-arg constructor
-   public Policy_Sai_Maw()
+   public Policy()
    {
       pHolderAge = 0;
       pHolderWeightInLb = 0;
@@ -22,7 +25,7 @@ public class Policy_Sai_Maw
       pHolderLastName = "Doe";
       policyNum = "abcd1234";
       providerName = "Omnicorp";
-      pHolderSmokingStatus = 'y';
+      pHolderSmokingStatus = "";
    }
    /**
       plug-in constructor method
@@ -35,7 +38,7 @@ public class Policy_Sai_Maw
       @param pNum  policy number
       @param pName provider name
    */
-   public Policy_Sai_Maw(String fName, String lName, char ss, int age,
+   public Policy(String fName, String lName, String ss, int age,
                  double lb,double inch,String pNum, String pName)
    {
       pHolderFirstName = fName;
@@ -66,7 +69,7 @@ public class Policy_Sai_Maw
       @param inch policyholder height in inch
       @return premium
    */
-   public double premium(int age, char ss, double lb, double inch)
+   public double premium(int age, String ss, double lb, double inch)
    {
       final double baseFees = 600;
       final double agePremium = 75;
@@ -78,14 +81,14 @@ public class Policy_Sai_Maw
          {
             if ( age > 50 )
                {
-                  if ( ss == 'y' )
+                  if ( ss.equalsIgnoreCase("smoker") )
                      { premium = baseFees + agePremium + smokerPremium + (( BMI - 35 ) * 20); }
                   else
                      { premium = baseFees + agePremium + (( BMI - 35 ) * 20); }
                }
              else 
                {
-                  if ( ss == 'y' )
+                  if ( ss.equalsIgnoreCase("smoker") )
                      { premium = baseFees + smokerPremium + (( BMI - 35 ) * 20); }
                   else
                      { premium = baseFees + (( BMI - 35 ) * 20); }
@@ -96,14 +99,14 @@ public class Policy_Sai_Maw
          {
            if ( age > 50 )
                {
-                  if ( ss == 'y' )
+                  if ( ss.equalsIgnoreCase("smoker") )
                      { premium = baseFees + agePremium + smokerPremium ; }
                   else
                      { premium = baseFees + agePremium ; }
                }
              else 
                {
-                  if ( ss == 'y' )
+                  if ( ss.equalsIgnoreCase("smoker") )
                      { premium = baseFees + smokerPremium ; }
                   else
                      { premium = baseFees ; }
@@ -144,7 +147,7 @@ public class Policy_Sai_Maw
    {
       return pHolderHeightInInch;
    }
-   public char getPolicyholderSmokingStatus()
+   public String getPolicyholderSmokingStatus()
    {
       return pHolderSmokingStatus;
    }
@@ -180,7 +183,7 @@ public class Policy_Sai_Maw
    {
       pHolderHeightInInch = height;
    }
-   public void setPolicyholderSmokingStatus(char ss)
+   public void setPolicyholderSmokingStatus(String ss)
    {
       pHolderSmokingStatus = ss;
    }
