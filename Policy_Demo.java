@@ -14,9 +14,6 @@ public class Policy_Demo
       int pHolderAge = 0;
       double pHolderWeight, pHolderHeight;
       String policyNum, providerName;
-   
-      //policy object to store data
-      Policy policy1 = new Policy();
       
       //Scanner object to read input
       Scanner keyboard = new Scanner(System.in);
@@ -25,31 +22,26 @@ public class Policy_Demo
       //set policy number
       System.out.print("Please enter the Policy Number: ");
       policyNum = keyboard.nextLine();
-      policy1.setPolicyNum(policyNum);
       System.out.println();
       
       //set provider name
       System.out.print("Please enter the Provider Name: ");
       providerName = keyboard.nextLine();
-      policy1.setProviderName(providerName);
       System.out.println();
       
       //set policyholder's first name
       System.out.print("Please enter the Policyholder's First Name: ");
       pHolderFirstName = keyboard.nextLine();
-      policy1.setPolicyholderFirstName(pHolderFirstName);
       System.out.println();
       
       //set policyholder's last name
       System.out.print("Please enter the Policyholder's Last Name: ");
       pHolderLastName = keyboard.nextLine();
-      policy1.setPolicyholderLastName(pHolderLastName);
       System.out.println();
       
       //set policyholder's age 
       System.out.print("Please enter the Policyholder's Age: ");
       pHolderAge = keyboard.nextInt();
-      policy1.setPolicyholderAge(pHolderAge);
       System.out.println();
       
       //buffer for next data entry
@@ -58,20 +50,21 @@ public class Policy_Demo
       //set policyholder's smoking status
       System.out.print("Please enter the Policyholder's Smoking Status (smoker/non-smoker): ");
       pHolderSmokingStatus = keyboard.nextLine();
-      policy1.setPolicyholderSmokingStatus(pHolderSmokingStatus);
       System.out.println(); 
       
       //set policyholder's height
       System.out.print("Please enter the Policyholder's Height (in inches): ");
       pHolderHeight = keyboard.nextDouble();
-      policy1.setPolicyholderHeight(pHolderHeight);
       System.out.println();
       
       //set policyholder's weight
       System.out.print("Please enter the Policyholder's Weight (in pounds): ");
       pHolderWeight = keyboard.nextDouble();
-      policy1.setPolicyholderWeight(pHolderWeight);
       System.out.println();
+      
+      //policy object to store data
+      Policy policy1 = new Policy(pHolderFirstName, pHolderLastName, pHolderSmokingStatus, pHolderAge, 
+                                  pHolderWeight, pHolderHeight, policyNum, providerName);
       
       //print out relevant statements
       System.out.printf("Policy Number: %s\n",policy1.getPolicyNum());

@@ -76,18 +76,22 @@ public class Policy
       final double smokerPremium = 100;
       double BMI = (lb * 703 ) / (inch * inch);
       double premium = 0;
-      
+      //for policyholder < BMI - 35
       if ( BMI > 35)
-         {
+         {  
+            //for policy holder over the age of 50
             if ( age > 50 )
                {
+                  //check if smoker or not
                   if ( ss.equalsIgnoreCase("smoker") )
                      { premium = baseFees + agePremium + smokerPremium + (( BMI - 35 ) * 20); }
                   else
                      { premium = baseFees + agePremium + (( BMI - 35 ) * 20); }
                }
+             //for policyholder = or under the age of 50
              else 
                {
+                  //check if smoker or not
                   if ( ss.equalsIgnoreCase("smoker") )
                      { premium = baseFees + smokerPremium + (( BMI - 35 ) * 20); }
                   else
@@ -95,17 +99,22 @@ public class Policy
  
                } 
          }
+       //for policyholder = or > BMI - 35
        else
          {
+           //for policyholder over the age of 50
            if ( age > 50 )
                {
+                  //check if smoker or not
                   if ( ss.equalsIgnoreCase("smoker") )
                      { premium = baseFees + agePremium + smokerPremium ; }
                   else
                      { premium = baseFees + agePremium ; }
                }
+             //for policyholder = or under the age of 50
              else 
                {
+                  //check if smoker or not
                   if ( ss.equalsIgnoreCase("smoker") )
                      { premium = baseFees + smokerPremium ; }
                   else
