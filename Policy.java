@@ -82,7 +82,7 @@ public class Policy
          {
             if ( age > 50 && ss.equalsIgnoreCase("smoker")  )
                { premium = BASE_FEES + AGE_PREMIUM + SMOKER_PREMIUM + bmiFees; }
-            else if ( age > 50 && ss.equalsIgnoreCase("non-smoker")
+            else if ( age > 50 && ss.equalsIgnoreCase("non-smoker"))
                { premium = BASE_FEES + AGE_PREMIUM + bmiFees; }
             else if ( age <= 50 && ss.equalsIgnoreCase("smoker"))
                { premium = BASE_FEES + SMOKER_PREMIUM + bmiFees;} 
