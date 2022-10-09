@@ -71,118 +71,164 @@ public class Policy
    */
    public double premium(int age, String ss, double lb, double inch)
    {
-      final double baseFees = 600;
-      final double agePremium = 75;
-      final double smokerPremium = 100;
+      final double BASE_FEES = 600;
+      final double AGE_PREMIUM = 75;
+      final double SMOKER_PREMIUM = 100;
       double BMI = (lb * 703 ) / (inch * inch);
+      double bmiFees = (BMI - 35 ) * 20;
       double premium = 0;
-      
+      //policy holder over 35 BMI
       if ( BMI > 35)
          {
-            if ( age > 50 )
-               {
-                  if ( ss.equalsIgnoreCase("smoker") )
-                     { premium = baseFees + agePremium + smokerPremium + (( BMI - 35 ) * 20); }
-                  else
-                     { premium = baseFees + agePremium + (( BMI - 35 ) * 20); }
-               }
-             else 
-               {
-                  if ( ss.equalsIgnoreCase("smoker") )
-                     { premium = baseFees + smokerPremium + (( BMI - 35 ) * 20); }
-                  else
-                     { premium = baseFees + (( BMI - 35 ) * 20); }
- 
-               } 
+            if ( age > 50 && ss.equalsIgnoreCase("smoker")  )
+               { premium = BASE_FEES + AGE_PREMIUM + SMOKER_PREMIUM + bmiFees; }
+            else if ( age > 50 && ss.equalsIgnoreCase("non-smoker")
+               { premium = BASE_FEES + AGE_PREMIUM + bmiFees; }
+            else if ( age <= 50 && ss.equalsIgnoreCase("smoker"))
+               { premium = BASE_FEES + SMOKER_PREMIUM + bmiFees;} 
+            else
+               { premium = BASE_FEES + bmiFees; }
          }
+       //policy holder under and equal to 35 BMI
        else
          {
-           if ( age > 50 )
-               {
-                  if ( ss.equalsIgnoreCase("smoker") )
-                     { premium = baseFees + agePremium + smokerPremium ; }
-                  else
-                     { premium = baseFees + agePremium ; }
-               }
-             else 
-               {
-                  if ( ss.equalsIgnoreCase("smoker") )
-                     { premium = baseFees + smokerPremium ; }
-                  else
-                     { premium = baseFees ; }
+           if ( age > 50 && ss.equalsIgnoreCase("smoker") )
+               { premium = BASE_FEES + AGE_PREMIUM + SMOKER_PREMIUM ; }
+           else if ( age > 50 && ss.equalsIgnoreCase("non-smoker"))
+               { premium = BASE_FEES + AGE_PREMIUM ; }
+           else if ( age <= 50 && ss.equalsIgnoreCase("smoker") )
+               { premium = BASE_FEES + SMOKER_PREMIUM ; }
+           else
+               { premium = BASE_FEES ; }
  
-               }  
-         }
-         
+          }  
          return premium;   
    }
    /**
-      accessor methods for class 
+   this method returns the policy number
+   @return policy number 
    */
    public String getPolicyNum()
    {
       return policyNum;
    }
+   /**
+   this method returns the provider number
+   @return provider number 
+   */
    public String getProviderName()
    {
       return providerName;
    }
+   /**
+   this method returns the first name
+   @return policy holder first name 
+   */
    public String getPolicyholderFirstName()
    {
       return pHolderFirstName;
    }
+   /**
+   this method returns policy holder last name
+   @return policy holder last name
+   */
    public String getPolicyholderLastName()
    {
       return pHolderLastName;
    }
+   /**
+   this method returns the age
+   @return age 
+   */
    public int getPolicyholderAge()
    {
       return pHolderAge;
    }
+   /**
+   this method returns weight
+   @return weight
+   */
    public double getPolicyholderWeight()
    {
       return pHolderWeightInLb;
    }
+   /**
+   this method returns height
+   @return height
+   */
    public double getPolicyholderHeight()
    {
       return pHolderHeightInInch;
    }
+   /**
+   this method returns smoking status
+   @return smoking status
+   */
    public String getPolicyholderSmokingStatus()
    {
       return pHolderSmokingStatus;
    }
    
    /**
-      mutator methods for class 
+   this method sets the policy number
+   @param pNum policy number 
    */
    public void setPolicyNum(String pNum)
    {
       policyNum = pNum;
    }
+   /**
+   this method sets the provider name
+   @param proName provider name 
+   */
    public void setProviderName(String proName)
    {
       providerName = proName;
    }
+   /**
+   this method sets the first name
+   @param fName first name
+   */
    public void setPolicyholderFirstName(String fName)
    {
      pHolderFirstName = fName;
    }
+   /**
+   this method sets the last name
+   @param lName last name
+   */
    public void setPolicyholderLastName(String lName)
    {
       pHolderLastName = lName;
    }
+   /**
+   this method sets the age
+   @param age policyholder age 
+   */
    public void setPolicyholderAge(int age)
    {
       pHolderAge = age;
    }
+   /**
+   this method sets the weight
+   @param weight weight 
+   */
    public void setPolicyholderWeight(double weight)
    {
       pHolderWeightInLb = weight;
    }
+   /**
+   this method sets the height
+   @param height policyholder height
+   */
    public void setPolicyholderHeight(double height)
    {
       pHolderHeightInInch = height;
    }
+   /**
+   this method sets the smoking status
+   @param ss smoking status 
+   */
    public void setPolicyholderSmokingStatus(String ss)
    {
       pHolderSmokingStatus = ss;
