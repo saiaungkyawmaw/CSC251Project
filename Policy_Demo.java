@@ -1,5 +1,5 @@
 /*
-   policy class demo___
+   policy class demo
 */
 
 import java.util.*; 

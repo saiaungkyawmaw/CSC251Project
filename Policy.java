@@ -1,5 +1,5 @@
 /*
-   project_1_policy class___
+   project_1_policy class
 */
 
 
