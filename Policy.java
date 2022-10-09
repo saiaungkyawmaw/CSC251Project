@@ -6,26 +6,26 @@
 public class Policy
 {
    //fields to store relevant primary data
-   private String pHolderFirstName;
-   private String pHolderLastName;
-   private String pHolderSmokingStatus;
-   private int pHolderAge = 0;
-   private double pHolderWeightInLb;
-   private double pHolderHeightInInch;
+   private String firstName;
+   private String lastName;
+   private String ss;
+   private int age = 0;
+   private double weight;
+   private double height;
    private String policyNum;
    private String providerName;
    
    //no-arg constructor
    public Policy()
    {
-      pHolderAge = 0;
-      pHolderWeightInLb = 0;
-      pHolderHeightInInch = 0;
-      pHolderFirstName = "John/Jane";
-      pHolderLastName = "Doe";
+      age = 0;
+      weight = 0;
+      height = 0;
+      firstName = "John/Jane";
+      lastName = "Doe";
       policyNum = "abcd1234";
       providerName = "Omnicorp";
-      pHolderSmokingStatus = "";
+      ss = " ";
    }
    /**
       plug-in constructor method
@@ -38,15 +38,15 @@ public class Policy
       @param pNum  policy number
       @param pName provider name
    */
-   public Policy(String fName, String lName, String ss, int age,
+   public Policy(String fName, String lName, String SS, int Age,
                  double lb,double inch,String pNum, String pName)
    {
-      pHolderFirstName = fName;
-      pHolderLastName = lName;
-      pHolderSmokingStatus = ss;
-      pHolderAge = age;
-      pHolderWeightInLb = lb;
-      pHolderHeightInInch = inch;
+      firstName = fName;
+      lastName = lName;
+      ss = SS;
+      age = Age;
+      weight = lb;
+      height = inch;
       providerName = pName;
       policyNum = pNum;
       
@@ -57,9 +57,9 @@ public class Policy
       @param inch policyholder height in inch
       @return BMI
    */
-   public double BMI(double lb, double inch)
+   public double BMI()
    {
-      return ( (lb * 703 ) / (inch * inch) );
+      return ( (weight * 703 ) / (height * height) );
    }
    /**
       this method calculates and returns the policy premium
@@ -69,12 +69,20 @@ public class Policy
       @param inch policyholder height in inch
       @return premium
    */
-   public double premium(int age, String ss, double lb, double inch)
+   public double premium()
    {
+<<<<<<< Updated upstream
       final double baseFees = 600;
       final double agePremium = 75;
       final double smokerPremium = 100;
       double BMI = (lb * 703 ) / (inch * inch);
+=======
+      final double BASE_FEES = 600;
+      final double AGE_PREMIUM = 75;
+      final double SMOKER_PREMIUM = 100;
+      double BMI = (weight * 703 ) / (height * height);
+      double bmiFees = (BMI - 35 ) * 20;
+>>>>>>> Stashed changes
       double premium = 0;
       //for policyholder < BMI - 35
       if ( BMI > 35)
@@ -138,27 +146,27 @@ public class Policy
    }
    public String getPolicyholderFirstName()
    {
-      return pHolderFirstName;
+      return firstName;
    }
    public String getPolicyholderLastName()
    {
-      return pHolderLastName;
+      return lastName;
    }
    public int getPolicyholderAge()
    {
-      return pHolderAge;
+      return age;
    }
    public double getPolicyholderWeight()
    {
-      return pHolderWeightInLb;
+      return weight;
    }
    public double getPolicyholderHeight()
    {
-      return pHolderHeightInInch;
+      return height;
    }
    public String getPolicyholderSmokingStatus()
    {
-      return pHolderSmokingStatus;
+      return ss;
    }
    
    /**
@@ -174,26 +182,26 @@ public class Policy
    }
    public void setPolicyholderFirstName(String fName)
    {
-     pHolderFirstName = fName;
+     firstName = fName;
    }
    public void setPolicyholderLastName(String lName)
    {
-      pHolderLastName = lName;
+      lastName = lName;
    }
    public void setPolicyholderAge(int age)
    {
-      pHolderAge = age;
+      age = age;
    }
    public void setPolicyholderWeight(double weight)
    {
-      pHolderWeightInLb = weight;
+      weight = weight;
    }
    public void setPolicyholderHeight(double height)
    {
-      pHolderHeightInInch = height;
+      height = height;
    }
    public void setPolicyholderSmokingStatus(String ss)
    {
-      pHolderSmokingStatus = ss;
+      ss = ss;
    }
 }
