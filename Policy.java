@@ -1,5 +1,5 @@
 /*
-   project_1_policy class___
+   project_1_policy class
 */
 
 
@@ -45,6 +45,7 @@ public class Policy
       lastName = lName;
       ss = SS;
       age = age;
+
       weight = lb;
       height = inch;
       providerName = pName;

@@ -1,6 +1,7 @@
 /*
-   policy class demo___
+   policy class demo
 */
+
 
 import java.util.*; //scanner class to read input
 import java.io.*;
@@ -24,6 +25,53 @@ public class Policy_Demo
       
       //Scanner object to read text
       Scanner inputFile = new Scanner(file);
+      
+      String firstName,lastName;
+      String smokingStatus;
+      int age = 0;
+      double weight = 0.0; 
+      double height = 0.0;
+      String policyNum, providerName;
+      //policy object list and file name
+      ArrayList<Policy> policyList = new ArrayList<Policy>();
+      
+      //smoker count
+      int smoker = 0;
+      /**
+      //file name input
+      Scanner keyboard = new Scanner(System.in);
+      System.out.print("Enter the file name you want to read: ");
+      File file = new File(keyboard.nextLine());
+      */
+      File file = new File("PolicyInformation.txt");
+      //Scanner object to read text
+      Scanner inputFile = new Scanner(file);
+      
+      //read line and create objects
+      while(inputFile.hasNext())
+      {
+         policyNum        = inputFile.nextLine();
+         providerName     = inputFile.nextLine();
+         firstName        = inputFile.nextLine();
+         lastName         = inputFile.nextLine();
+         
+         age              = Integer.parseInt(inputFile.nextLine());
+         smokingStatus    = inputFile.nextLine();
+         height           = Double.parseDouble(inputFile.nextLine());
+         weight           = Double.parseDouble(inputFile.nextLine());
+         if (inputFile.hasNext())
+            inputFile.nextLine();
+
+         policyList.add(new Policy(firstName,lastName,smokingStatus,age,weight,height,policyNum, providerName));
+         
+         if (smokingStatus.equalsIgnoreCase("smoker"))
+            smoker ++;
+      }
+      
+      inputFile.close();
+      
+      for (Policy policy : policyList)
+         printOut(policy);
       
       //read line and create objects
       while(inputFile.hasNextLine())
@@ -59,7 +107,7 @@ public class Policy_Demo
    */
    public static void printOut(Policy obj)
    {
-
+      //print out relevant statements
       System.out.printf("Policy Number: %s\n",obj.getPolicyNum());
       System.out.printf("Provider Name: %s\n",obj.getProviderName());
       System.out.printf("Policyholder's First Name: %s\n",obj.getPolicyholderFirstName());
@@ -69,6 +117,8 @@ public class Policy_Demo
       System.out.printf("Policyholder's Height: %,.2f inches\n",obj.getPolicyholderHeight());
       System.out.printf("Policyholder's Weight: %,.2f lb\n",obj.getPolicyholderWeight());
       System.out.printf("Policyholder's BMI: %,.2f\n",obj.BMI());
+
+      System.out.printf("Policy Price: $%,.2f \n\n",obj.premium());
       System.out.printf("Policy Price: $%,.2f \n",obj.premium());
 
    }
