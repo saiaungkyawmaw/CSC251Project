@@ -13,7 +13,6 @@ public class PolicyHolder
    private double weight;
    private double height;
    private String policyNum;
-   private String providerName;
    
    //no-arg constructor
    public PolicyHolder()
@@ -24,7 +23,6 @@ public class PolicyHolder
       firstName = "John/Jane";
       lastName = "Doe";
       policyNum = "abcd1234";
-      providerName = "Omnicorp";
       ss = ""; //smoking status
    }
    /**
@@ -36,10 +34,9 @@ public class PolicyHolder
       @param lb    policy holder weight in lb
       @param inch  policy holder height in inch
       @param pNum  policy number
-      @param pName provider name
    */
    public PolicyHolder(String fName, String lName, String SS, int age,
-                 double lb,double inch,String pNum, String pName)
+                 double lb,double inch,String pNum)
    {
       firstName = fName;
       lastName = lName;
@@ -48,7 +45,6 @@ public class PolicyHolder
 
       weight = lb;
       height = inch;
-      providerName = pName;
       policyNum = pNum;
       
    }
@@ -104,20 +100,27 @@ public class PolicyHolder
          return premium;   
    }
    /**
+      toString method
+      @return all fields data in string type 
+   */
+   public String toString()
+   {
+      String str = "First Name: " + firstName
+                + "\nLast Name: " + lastName
+                + "\nSmoking Status: " + ss
+                + "\nWeight: " + weight
+                + "\nHeight: " + height
+                + "\nPolicy Number: " + policyNum ;
+                
+      return str;         
+   }
+   /**
    this method returns the policy number
    @return policy number 
    */
    public String getPolicyNum()
    {
       return policyNum;
-   }
-   /**
-   this method returns the provider number
-   @return provider number 
-   */
-   public String getProviderName()
-   {
-      return providerName;
    }
    /**
    this method returns the first name
@@ -175,14 +178,6 @@ public class PolicyHolder
    public void setPolicyNum(String pNum)
    {
       policyNum = pNum;
-   }
-   /**
-   this method sets the provider name
-   @param proName provider name 
-   */
-   public void setProviderName(String proName)
-   {
-      providerName = proName;
    }
    /**
    this method sets the first name
