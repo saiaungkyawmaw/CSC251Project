@@ -7,11 +7,13 @@ public class Policy
 {
    //fields to store relevant primary data
    private String providerName;
+   private static int policyCount = 0;
    
    //no-arg constructor
    public Policy()
    {
       providerName = "Omnicorp";
+      policyCount++;
    }
    /**
       plug-in constructor method
@@ -20,6 +22,7 @@ public class Policy
    public Policy(String pName)
    {
       providerName = pName; 
+      policyCount++;
    }
    /**
       toString method
