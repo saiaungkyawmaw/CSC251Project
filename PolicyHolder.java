@@ -12,7 +12,6 @@ public class PolicyHolder
    private int age = 0;
    private double weight;
    private double height;
-   private String policyNum;
    
    //no-arg constructor
    public PolicyHolder()
@@ -22,7 +21,6 @@ public class PolicyHolder
       height = 0;
       firstName = "John/Jane";
       lastName = "Doe";
-      policyNum = "abcd1234";
       ss = ""; //smoking status
    }
    /**
@@ -36,17 +34,27 @@ public class PolicyHolder
       @param pNum  policy number
    */
    public PolicyHolder(String fName, String lName, String SS, int age,
-                 double lb,double inch,String pNum)
+                 double lb,double inch)
    {
       firstName = fName;
       lastName = lName;
       ss = SS;
       age = age;
-
       weight = lb;
       height = inch;
-      policyNum = pNum;
-      
+   }
+   /**
+      copy constructor
+      @param PolicyHolder object
+   */
+   public PolicyHolder(PolicyHolder obj)
+   {
+      this.firstName = obj.firstName;
+      this.lastName = obj.lastName;
+      this.ss = obj.ss;
+      this.age = obj.age;
+      this.weight = obj.weight;
+      this.height = obj.height;
    }
    /**
       this method calculates and returns BMI for policy holder
@@ -104,23 +112,18 @@ public class PolicyHolder
       @return all fields data in string type 
    */
    public String toString()
-   {
-      String str = "First Name: " + firstName
-                + "\nLast Name: " + lastName
-                + "\nSmoking Status: " + ss
-                + "\nWeight: " + weight
-                + "\nHeight: " + height
-                + "\nPolicy Number: " + policyNum ;
+   {  String bmi = String.format("%,.2f", this.BMI());
+      String premium = String.format("%,.2f", this.premium());
+      
+      String str = "PolicyHolder's First Name: " + firstName
+                + "\nPolicyHolder's Last Name: " + lastName
+                + "\nPolicyHolder's Smoking Status: " + ss
+                + "\nPolicyHolder's Height: " + height + " inches"
+                + "\nPolicyHolder's Weight: " + weight + " pounds"
+                + "\nPolicyHolder's BMI: " + bmi
+                + "\nPolicyHolder's Premium: $" + premium;
                 
       return str;         
-   }
-   /**
-   this method returns the policy number
-   @return policy number 
-   */
-   public String getPolicyNum()
-   {
-      return policyNum;
    }
    /**
    this method returns the first name
@@ -169,15 +172,6 @@ public class PolicyHolder
    public String getPolicyholderSmokingStatus()
    {
       return ss;
-   }
-   
-   /**
-   this method sets the policy number
-   @param pNum policy number 
-   */
-   public void setPolicyNum(String pNum)
-   {
-      policyNum = pNum;
    }
    /**
    this method sets the first name
